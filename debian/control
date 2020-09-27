@@ -1,0 +1,33 @@
+Source: sof-bin
+Section: non-free/kernel
+Priority: optional
+Maintainer: Barak A. Pearlmutter <bap@debian.org>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 13)
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/barak/sof-bin.git
+Vcs-Browser: https://github.com/barak/sof-bin/
+
+Package: firmware-sof-bin
+Architecture: amd64
+Description: SOF firmware and topology binaries
+ This is a trivial packaging of the manufacturer's firmware for
+ various Intel gizmos, including in particular the audio device in the
+ Dell Inspiron 7591 2in1,
+  $ lspci | egrep audio
+  00:1f.3 Multimedia audio controller: Intel Corporation Comet Lake PCH-LP cAVS
+  $ dmesg
+  sof-audio-pci 0000:00:1f.3: DSP detected with PCI class/subclass/prog-if info 0x040100
+  sof-audio-pci 0000:00:1f.3: Digital mics found on Skylake+ platform, using SOF driver
+  sof-audio-pci 0000:00:1f.3: enabling device (0000 -> 0002)
+  sof-audio-pci 0000:00:1f.3: DSP detected with PCI class/subclass/prog-if 0x040100
+  sof-audio-pci 0000:00:1f.3: bound 0000:00:02.0 (ops i915_audio_component_bind_ops [i915])
+  sof-audio-pci 0000:00:1f.3: use msi interrupt mode
+  sof-audio-pci 0000:00:1f.3: hda codecs found, mask 5
+  sof-audio-pci 0000:00:1f.3: using HDA machine driver skl_hda_dsp_generic now
+  sof-audio-pci 0000:00:1f.3: DMICs detected in NHLT tables: 2
+  sof-audio-pci 0000:00:1f.3: firmware: failed to load intel/sof/sof-cml.ri (-2)
+  sof-audio-pci 0000:00:1f.3: Direct firmware load for intel/sof/sof-cml.ri failed with error -2
+  sof-audio-pci 0000:00:1f.3: error: request firmware intel/sof/sof-cml.ri failed err: -2
+  sof-audio-pci 0000:00:1f.3: error: failed to load DSP firmware -2
+  sof-audio-pci 0000:00:1f.3: error: sof_probe_work failed err: -2
