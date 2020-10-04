@@ -4,27 +4,25 @@ Subject: DESTDIR
 
 Make go.sh listen to DESTDIR.
 
-Add shebang to make go.sh into a proper shell script.
-
 Set option so go.sh will terminate on an intermediate error.
 ---
- go.sh | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ go.sh | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
 diff --git a/go.sh b/go.sh
-index ccf1d61..c567b67 100755
+index 3fa7957..23b859d 100755
 --- a/go.sh
 +++ b/go.sh
-@@ -1,3 +1,7 @@
-+#!/bin/sh
-+
+@@ -1,5 +1,7 @@
+ #!/bin/bash
+ 
 +set -e
 +
- # TODO: Helper script - automate the mundane !
- 
- # This script should do several things.
-@@ -27,16 +31,17 @@ VERSION=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3| cut -d"-" -f 2)
- echo "Installing Intel firmware and topology $VERSION to $INTEL_PATH"
+ # This script installs the firmware and topologies in /lib/firmware/intel.
+ # Optionally if ROOT is set as an environment variable by the caller it will be
+ # prepended to the installation path.
+@@ -23,16 +25,17 @@ test -d ${INTEL_PATH}/sof-tplg-${SOF_VERSION} || \
+ echo "Installing Intel firmware and topology $SOF_VERSION to $INTEL_PATH"
  
  # wipe previous releases
 -rm -rf ${ROOT}/${INTEL_PATH}/sof/*
@@ -44,5 +42,12 @@ index ccf1d61..c567b67 100755
 -cd ${ROOT}/${INTEL_PATH}/sof
 +cd ${DESTDIR}${ROOT}/${INTEL_PATH}/sof
  
- ln -s ${VERSION}/sof-bdw-${VERSION}.ri sof-bdw.ri
- ln -s ${VERSION}/sof-byt-${VERSION}.ri sof-byt.ri
+ ln -s ${SOF_VERSION}/sof-bdw-${SOF_VERSION}.ri sof-bdw.ri
+ ln -s ${SOF_VERSION}/sof-byt-${SOF_VERSION}.ri sof-byt.ri
+@@ -47,4 +50,4 @@ ln -s ${SOF_VERSION}/intel-signed/sof-icl-${SOF_VERSION}.ri sof-icl.ri
+ cd ..
+ ln -s sof-tplg-${SOF_VERSION} sof-tplg
+ 
+-echo "Done installing Intel firmware and topology $SOF_VERSION"
+\ No newline at end of file
++echo "Done installing Intel firmware and topology $SOF_VERSION"

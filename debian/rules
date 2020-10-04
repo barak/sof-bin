@@ -1,9 +1,14 @@
 #!/usr/bin/make -f
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+include /usr/share/dpkg/pkg-info.mk
 
 %:
 	dh $@
 
 override_dh_auto_install:
-	env DESTDIR=$$(pwd)/debian/firmware-sof-bin sh -v ./go.sh
+	env \
+		DESTDIR=$$(pwd)/debian/firmware-sof-bin \
+		ROOT=/ \
+		SOF_VERSION=v$(DEB_VERSION_UPSTREAM) \
+		./go.sh
