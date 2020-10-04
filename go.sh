@@ -20,9 +20,9 @@
 #    files (e.g. signed public releases should match signed intel releases).
 #    "publish" rule. 
 
-ROOT=/
+ROOT=
 INTEL_PATH=lib/firmware/intel
-VERSION=v1.5
+VERSION=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3| cut -d"-" -f 2)
 
 echo "Installing Intel firmware and topology $VERSION to $INTEL_PATH"
 
