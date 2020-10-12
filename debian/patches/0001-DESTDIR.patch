@@ -6,11 +6,11 @@ Make go.sh listen to DESTDIR.
 
 Set option so go.sh will terminate on an intermediate error.
 ---
- go.sh | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ go.sh | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/go.sh b/go.sh
-index 3fa7957..23b859d 100755
+index f91dcc9..34559a7 100755
 --- a/go.sh
 +++ b/go.sh
 @@ -1,5 +1,7 @@
@@ -44,10 +44,3 @@ index 3fa7957..23b859d 100755
  
  ln -s ${SOF_VERSION}/sof-bdw-${SOF_VERSION}.ri sof-bdw.ri
  ln -s ${SOF_VERSION}/sof-byt-${SOF_VERSION}.ri sof-byt.ri
-@@ -47,4 +50,4 @@ ln -s ${SOF_VERSION}/intel-signed/sof-icl-${SOF_VERSION}.ri sof-icl.ri
- cd ..
- ln -s sof-tplg-${SOF_VERSION} sof-tplg
- 
--echo "Done installing Intel firmware and topology $SOF_VERSION"
-\ No newline at end of file
-+echo "Done installing Intel firmware and topology $SOF_VERSION"
