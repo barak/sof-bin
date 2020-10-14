@@ -2,6 +2,7 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 include /usr/share/dpkg/pkg-info.mk
+UV=$(shell echo "$(DEB_VERSION_UPSTREAM)" | sed "s/[+].*$$//")
 
 %:
 	dh $@
@@ -10,5 +11,5 @@ override_dh_auto_install:
 	env \
 		DESTDIR=$$(pwd)/debian/firmware-sof-bin \
 		ROOT=/ \
-		SOF_VERSION=v$(DEB_VERSION_UPSTREAM) \
+		SOF_VERSION=v$(UV) \
 		./go.sh
