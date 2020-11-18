@@ -2,13 +2,13 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 include /usr/share/dpkg/pkg-info.mk
-UV=$(shell echo "$(DEB_VERSION_UPSTREAM)" | sed "s/[+].*$$//")
+UV:=$(shell echo "$(DEB_VERSION_UPSTREAM)" | sed "s/[+].*$$//")
 
 %:
 	dh $@
 
 # If the go.sh script used standard mechanisms, we'd pass these parameters.
-DESTDIR=$$(pwd)/debian/firmware-sof-bin
+DESTDIR:=$(CURDIR)/debian/firmware-sof-bin
 prefix=/
 # Instead we pass ROOT as their concatenation.
 root=$(DESTDIR)$(prefix)
