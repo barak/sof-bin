@@ -7,9 +7,15 @@ UV=$(shell echo "$(DEB_VERSION_UPSTREAM)" | sed "s/[+].*$$//")
 %:
 	dh $@
 
+# If the go.sh script used standard mechanisms, we'd pass these parameters.
+DESTDIR=$$(pwd)/debian/firmware-sof-bin
+prefix=/
+# Instead we pass ROOT as their concatenation.
+root=$(DESTDIR)$(prefix)
+
 override_dh_auto_install:
+	mkdir -p $(root)/lib/firmware
 	env \
-		DESTDIR=$$(pwd)/debian/firmware-sof-bin \
-		ROOT=/ \
+		ROOT=$(root) \
 		SOF_VERSION=v$(UV) \
-		./go.sh
+		bash -e -x go.sh
