@@ -12,8 +12,16 @@ DESTDIR:=$(CURDIR)/debian/firmware-sof-bin
 prefix=/
 # Instead we pass ROOT as their concatenation.
 root=$(DESTDIR)$(prefix)
+# An alternative would be to patch go.sh to correct its API, but that
+# would be more brittle.
 
-override_dh_auto_install:
+
+# go.sh is invoked as "bash -e -x go.sh" instead of "./go.sh" because:
+# - go.sh might not be chmod +x
+# - go.sh does not set -e (to bail on errors) or set -x (for
+#   verbosity), and using a patch to add these seems a bit heavy handed
+
+execute_before_dh_auto_install:
 	mkdir -p $(root)/lib/firmware
 	env \
 		ROOT=$(root) \

@@ -1,0 +1,23 @@
+There are two debian-subdir-only packaging repos,
+
+- https://salsa.debian.org/mpearson/sof-bin-packaging.git
+- https://salsa.debian.org/stephanlachnit/sof-bin-packaging.git
+
+which can be built with
+
+	git clone https://salsa.debian.org/mpearson/sof-bin-packaging.git
+	git clone -b stable-v1.6 https://github.com/thesofproject/sof-bin.git
+	tar -zcf sof-bin_1.6.orig.tar.gz sof-bin
+	cd sof-bin
+	cp -r ../sof-bin-packaging/debian .
+	debuild -us -uc
+
+and one debian-branch-upstream-merged
+
+- https://github.com/barak/sof-bin.git
+
+which can be built with
+
+	fakeroot debian/rules binary
+
+All are based on https://github.com/thesofproject/sof-bin branch stable-v1.6

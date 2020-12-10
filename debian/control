@@ -5,17 +5,27 @@ Maintainer: Barak A. Pearlmutter <bap@debian.org>
 Standards-Version: 4.5.1
 Build-Depends: debhelper-compat (= 13)
 Rules-Requires-Root: no
+Homepage: https://github.com/thesofproject/sof-bin
 Vcs-Git: https://github.com/barak/sof-bin.git
 Vcs-Browser: https://github.com/barak/sof-bin/
 
-Package: firmware-sof-bin
+Package: firmware-sof-signed
 Architecture: amd64
-Description: SOF firmware and topology binaries
- This is a trivial packaging of the manufacturer's firmware for
- various Intel gizmos, including in particular the audio device in the
- Dell Inspiron 7591 2in1,
+Description: Intel SOF firmware and topology binaries - signed
+ Provides the Intel SOF audio firmware and topology needed for audio
+ functionality on some Intel system.
+ .
+ This package contains the pre-build and signed binaries.
+ .
+ This is needed in particular for the audio device in the Dell
+ Inspiron 7591 2in1 and the Lenovo something-or-other.
+ .
+ Detailed outputs are included here to make it easier for people who
+ need it to find this package by searching.
+ .
   $ lspci | egrep audio
   00:1f.3 Multimedia audio controller: Intel Corporation Comet Lake PCH-LP cAVS
+ .
   $ dmesg
   sof-audio-pci 0000:00:1f.3: DSP detected with PCI class/subclass/prog-if info 0x040100
   sof-audio-pci 0000:00:1f.3: Digital mics found on Skylake+ platform, using SOF driver
