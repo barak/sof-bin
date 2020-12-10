@@ -20,4 +20,8 @@ which can be built with
 
 	fakeroot debian/rules binary
 
+or even just
+
+	env DEB_RULES_REQUIRES_ROOT=no debian/rules binary
+
 All are based on https://github.com/thesofproject/sof-bin branch stable-v1.6
