@@ -8,7 +8,7 @@ UV:=$(shell echo "$(DEB_VERSION_UPSTREAM)" | sed "s/[+].*$$//")
 	dh $@
 
 # If the go.sh script used standard mechanisms, we'd pass these parameters.
-DESTDIR:=$(CURDIR)/debian/firmware-sof-bin
+DESTDIR:=$(CURDIR)/debian/firmware-sof-signed
 prefix=/
 # Instead we pass ROOT as their concatenation.
 root=$(DESTDIR)$(prefix)
