@@ -1,0 +1,62 @@
+UNMUTING THE AUDIO DEVICE
+=========================
+
+Sometimes these audio devices seem to come up muted. Here is how to
+deal with that.
+
+Ref: https://wiki.archlinux.org/index.php/Dell_Inspiron_15_(7590)#Automatically_un-muting_Master_device_after_booting
+
+Unmute device:
+
+$ alsamixer -c 0
+
+(Note: the argument is not usually necessary, and might differ on
+various computers.)
+
+- switch to "Master" device
+- press "m" to unmute it so that you see "00" instead of "MM" under
+- up arrow key to increase the volume to 100%
+
+- if it doesn't start "MM" you might want to do a mute/unmute cyle
+
+Store setting across boot:
+
+$ sudo alsactl store
+
+Alternative non-interactive command to unmute device:
+
+$ amixer -Dhw:0 cset name='Master Playback Switch' on
+$ amixer -Dhw:0 cset name='Master Playback Volume' 100%
+
+(Note: the "hw:0" might be different for different computers.)
+
+
+BUILDING THIS PACKAGE
+=====================
+
+This package, hosted at https://github.com/barak/sof-bin.git, is based
+on https://github.com/thesofproject/sof-bin branch stable-v1.6
+
+The binary .deb package can be built with the command
+
+	env DEB_RULES_REQUIRES_ROOT=no debian/rules binary
+
+or
+
+	fakeroot debian/rules binary
+
+There are two debian-subdir-only packaging repos of the same upstream
+
+- https://salsa.debian.org/mpearson/sof-bin-packaging.git
+- https://salsa.debian.org/stephanlachnit/sof-bin-packaging.git
+
+which can be built with
+
+	git clone https://salsa.debian.org/mpearson/sof-bin-packaging.git
+	git clone -b stable-v1.6 https://github.com/thesofproject/sof-bin.git
+	tar -zcf sof-bin_1.6.orig.tar.gz sof-bin
+	cd sof-bin
+	cp -r ../sof-bin-packaging/debian .
+	debuild -us -uc
+
+ -- Barak A. Pearlmutter <bap@debian.org>, Thu, 10 Dec 2020 13:08:27 +0000
