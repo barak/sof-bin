@@ -1,4 +1,15 @@
-There are two debian-subdir-only packaging repos,
+This package, hosted at https://github.com/barak/sof-bin.git, is based
+on https://github.com/thesofproject/sof-bin branch stable-v1.6
+
+The binary .deb package can be built with the command
+
+	env DEB_RULES_REQUIRES_ROOT=no debian/rules binary
+
+or
+
+	fakeroot debian/rules binary
+
+There are two debian-subdir-only packaging repos of the same upstream
 
 - https://salsa.debian.org/mpearson/sof-bin-packaging.git
 - https://salsa.debian.org/stephanlachnit/sof-bin-packaging.git
@@ -11,17 +22,3 @@ which can be built with
 	cd sof-bin
 	cp -r ../sof-bin-packaging/debian .
 	debuild -us -uc
-
-and one debian-branch-upstream-merged
-
-- https://github.com/barak/sof-bin.git
-
-which can be built with
-
-	fakeroot debian/rules binary
-
-or even just
-
-	env DEB_RULES_REQUIRES_ROOT=no debian/rules binary
-
-All are based on https://github.com/thesofproject/sof-bin branch stable-v1.6
