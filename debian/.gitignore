@@ -2,5 +2,5 @@
 /.debhelper/
 /debhelper-build-stamp
 /files
-/firmware-sof-bin/
+/firmware-sof-signed/
 /tmp/
