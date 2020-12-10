@@ -17,11 +17,14 @@ Description: Intel SOF firmware and topology binaries - signed
  .
  This package contains the pre-build and signed binaries.
  .
- This is needed in particular for the audio device in the Dell
- Inspiron 7591 2in1 and the Lenovo something-or-other.
+ This is needed in particular for the audio device in
  .
- Detailed outputs are included here to make it easier for people who
- need it to find this package by searching.
+  * Dell Inspiron 7591 2in1
+  * Lenovo X1 Carbon
+  * some Thinkpads
+ .
+ Here is some output symptomatic of the need for this firmware,
+ included to make this package easier to find.
  .
   $ lspci | egrep audio
   00:1f.3 Multimedia audio controller: Intel Corporation Comet Lake PCH-LP cAVS
