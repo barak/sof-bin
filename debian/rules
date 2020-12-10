@@ -2,13 +2,17 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 include /usr/share/dpkg/pkg-info.mk
+# Figure out the upstream version string to pass to go.sh:
 UV:=$(shell echo "$(DEB_VERSION_UPSTREAM)" | sed "s/[+].*$$//")
+
+# Figure out the name of the binary package we're installing to:
+BP:=$(shell egrep '^Package:' < debian/control | cut --delimiter=' ' --fields=2 | head -1)
 
 %:
 	dh $@
 
 # If the go.sh script used standard mechanisms, we'd pass these parameters.
-DESTDIR:=$(CURDIR)/debian/firmware-sof-signed
+DESTDIR:=$(CURDIR)/debian/$(BP)
 prefix=/
 # Instead we pass ROOT as their concatenation.
 root=$(DESTDIR)$(prefix)
