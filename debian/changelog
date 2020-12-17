@@ -1,5 +1,5 @@
-sof-bin (1.6+git.2020.12.10.faa5bdc-1) UNRELEASED; urgency=medium
+sof-bin (1.6.1+git.2020.12.15.7de98d8-1) UNRELEASED; urgency=medium
 
   * debianize (closes: #960788)
 
- -- Barak A. Pearlmutter <bap@debian.org>  Thu, 10 Dec 2020 11:56:26 +0000
+ -- Barak A. Pearlmutter <bap@debian.org>  Thu, 17 Dec 2020 21:50:14 +0000
