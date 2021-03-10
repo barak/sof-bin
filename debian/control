@@ -15,7 +15,7 @@ Description: Intel SOF firmware and topology binaries - signed
  Provides the Intel SOF audio firmware and topology needed for audio
  functionality on some Intel system.
  .
- This package contains the pre-build and signed binaries.
+ This package contains the pre-built and signed binaries.
  .
  This is needed in particular for the audio device in
  .
