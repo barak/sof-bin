@@ -20,6 +20,9 @@ test -n "${SOF_VERSION}" || \
 test -d ${INTEL_PATH}/sof-tplg-${SOF_VERSION} || \
     { echo "Can't find version ${SOF_VERSION} - are you missing leading v?"; exit 2; }
 
+test -d ${ROOT}/${INTEL_PATH}/sof || \
+    mkdir -p ${ROOT}/${INTEL_PATH}/sof
+
 echo "Installing Intel firmware and topology $SOF_VERSION to $INTEL_PATH"
 
 # wipe previous releases
@@ -48,6 +51,7 @@ ln -s ${SOF_VERSION}/intel-signed/sof-icl-${SOF_VERSION}.ri sof-icl.ri
 ln -s ${SOF_VERSION}/intel-signed/sof-jsl-${SOF_VERSION}.ri sof-jsl.ri
 ln -s ${SOF_VERSION}/intel-signed/sof-tgl-${SOF_VERSION}.ri sof-tgl.ri
 ln -s ${SOF_VERSION}/intel-signed/sof-ehl-${SOF_VERSION}.ri sof-ehl.ri
+ln -s ${SOF_VERSION}/intel-signed/sof-tgl-h-${SOF_VERSION}.ri sof-tgl-h.ri
 # link community-signed binary
 mkdir -p ${ROOT}/${INTEL_PATH}/sof/community/
 cd ${ROOT}/${INTEL_PATH}/sof/community/
@@ -60,6 +64,7 @@ ln -s ../${SOF_VERSION}/public-signed/sof-icl-${SOF_VERSION}.ri sof-icl.ri
 ln -s ../${SOF_VERSION}/public-signed/sof-jsl-${SOF_VERSION}.ri sof-jsl.ri
 ln -s ../${SOF_VERSION}/public-signed/sof-tgl-${SOF_VERSION}.ri sof-tgl.ri
 ln -s ../${SOF_VERSION}/public-signed/sof-tgl-${SOF_VERSION}.ri sof-ehl.ri
+ln -s ../${SOF_VERSION}/public-signed/sof-tgl-h-${SOF_VERSION}.ri sof-tgl-h.ri
 
 cd ${ROOT}/${INTEL_PATH}/
 ln -s sof-tplg-${SOF_VERSION} sof-tplg
